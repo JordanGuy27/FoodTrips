@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AxiosReq from './axiosReq';
+
 
 class Auth extends React.Component {
     constructor() {
@@ -14,6 +16,7 @@ class Auth extends React.Component {
         this.submitTest = this.submitTest.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addRest = this.addRest.bind(this);
+        this.submit = this.submit.bind(this);
     }
     componentDidMount() {
         firebase.auth().onAuthStateChanged((res) => {
@@ -66,12 +69,21 @@ class Auth extends React.Component {
             userText: ''
         })
     }
+    submit(e) {
+        e.preventDefault();
+
+    }
+
     render() {
     return (
         <div>
-            <input type="text" id="userText" value={this.state.userText} onChange={this.handleChange} onSubmit={this.submitTest} />
-            <label htmlFor="userSearch">Type City or Address</label>
-            <input type="submit" value="submit" onSubmit={this.submitTest} />
+
+            <form onSubmit={this.submit}>
+                 <input type="text" id="userText" value={this.state.userText} onChange={this.handleChange} onSubmit={this.submitTest} />
+                 <label htmlFor="userSearch">Type City or Address</label>
+                 <input type="submit" value="submit" onSubmit={this.submitTest} />
+            </form>
+      
             <button onClick={this.signIn}>Sign in</button>
             <button onClick={this.signOut}>Sign Out</button>
         </div>

@@ -44,9 +44,9 @@ class AxiosReq extends React.Component {
         }
       })
       .then(({ data }) => {
-        const restRes = data.restaurants[4].restaurant.name;
-        // console.log(restRes);
-        const restAdd = data.restaurants[4].restaurant.location.address;
+        // const restRes = data.restaurants[4].restaurant.name;
+        // // console.log(restRes);
+        // const restAdd = data.restaurants[4].restaurant.location.address;
 
         // const newList = {
 
@@ -76,8 +76,10 @@ class AxiosReq extends React.Component {
     return (
 
       <div>
+
             <h1>{this.state.restaurant}</h1>
             <p>{this.state.city}</p>
+
       </div>
     );
   }
