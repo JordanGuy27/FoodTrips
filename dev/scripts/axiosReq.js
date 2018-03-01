@@ -3,6 +3,7 @@ import DOM from "react-dom";
 import axios from "axios";
 
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+
 class AxiosReq extends React.Component {
   constructor() {
     super();
@@ -27,6 +28,7 @@ class AxiosReq extends React.Component {
           lat: data.results[0].geometry.location.lat,
           lon: data.results[0].geometry.location.lng
         });
+        console.log(data);
       });
   }
   zomatoSearch() {
@@ -37,8 +39,8 @@ class AxiosReq extends React.Component {
         },
         params: {
           // q: 'toronto'
-          lat: "43.65226",
-          lon: "-79.3831843"
+          lat: "43.653257",
+          lon: "-79.466695"
         }
       })
       .then(({ data }) => {
@@ -56,31 +58,28 @@ class AxiosReq extends React.Component {
           // console.log(eatingPlace.restaurant.name);
           // console.log(eatingPlace.restaurant.location.address);
 
-          const restObj = {
-            name: eatingPlace.restaurant.name,
-            address: eatingPlace.restaurant.location.address
-          };
+          const restObj = { name: eatingPlace.restaurant.name, address: eatingPlace.restaurant.location.address };
           newArray.push(restObj);
         });
 
         console.log(newArray);
 
-        this.setState({
-          restaurants: newArray
-        });
+        this.setState({ restaurants: newArray });
       });
   }
   componentDidMount() {
-    this.getCoords("Toronto, Ontario");
+    this.getCoords("438 Queen St W");
     this.zomatoSearch();
   }
 
   render() {
     return (
+
       <div>
-        <h1>{this.state.restaurant}</h1>
-        <p>{this.state.city}</p>
-        <p>{this.newArray}</p>
+
+            <h1>{this.state.restaurant}</h1>
+            <p>{this.state.city}</p>
+
       </div>
     );
   }
