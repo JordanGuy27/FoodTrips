@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import axiosReq from './axiosReq';
+import AxiosReq from './axiosReq';
 import Auth from './authentication';
+import MapContainer from './google';
+
 
 // Initialize Firebase
 var config = {
@@ -22,6 +24,7 @@ class App extends React.Component {
           <div>
             <Auth />
             <AxiosReq />
+            <MapContainer />
           </div>
       )
     }
