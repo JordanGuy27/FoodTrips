@@ -38,10 +38,12 @@ class AxiosReq extends React.Component {
           "user-key": `53314a8415a07eafa4656461b1c6272d`
         },
         params: {
-          // q: 'toronto'
-          lat: "43.653257",
-          lon: "-79.466695",
-          radius: 500,
+          // q: 'toronto'      
+
+          lat: "",
+          lon: "",
+          radius: '500',
+
           sort: 'real_distance'
         }
       })
