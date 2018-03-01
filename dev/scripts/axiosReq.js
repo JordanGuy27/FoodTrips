@@ -40,7 +40,9 @@ class AxiosReq extends React.Component {
         params: {
           // q: 'toronto'
           lat: "43.653257",
-          lon: "-79.466695"
+          lon: "-79.466695",
+          radius: 500,
+          sort: 'real_distance'
         }
       })
       .then(({ data }) => {
