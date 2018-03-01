@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import axiosReq from './axiosReq';
+import AxiosReq from './axiosReq';
 import Auth from './authentication';
 
 // Initialize Firebase

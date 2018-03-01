@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 class Auth extends React.Component {
     constructor() {
@@ -10,6 +11,7 @@ class Auth extends React.Component {
         }
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
+        this.submitTest = this.submitTest.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.addRest = this.addRest.bind(this);
     }
@@ -67,13 +69,17 @@ class Auth extends React.Component {
     render() {
     return (
         <div>
-            <input type="text" id="userText" value={this.state.userText} onChange={this.handleChange}/>
+            <input type="text" id="userText" value={this.state.userText} onChange={this.handleChange} onSubmit={this.submitTest} />
             <label htmlFor="userSearch">Type City or Address</label>
+            <input type="submit" value="submit" onSubmit={this.submitTest} />
             <button onClick={this.signIn}>Sign in</button>
             <button onClick={this.signOut}>Sign Out</button>
         </div>
     )
 }
+        submitTest() {
+            console.log("test")
+        }
 }
 
 export default Auth; 
