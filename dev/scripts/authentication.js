@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import AxiosReq from './axiosReq';
-
+import axios from 'axios';
 
 class Auth extends React.Component {
     constructor() {
@@ -9,7 +9,10 @@ class Auth extends React.Component {
         this.state = {
             loggedIn: false,
             user: {},
-            userText: ''
+            userText: '',
+            lat: '',
+            lng: ''
+
         }
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
@@ -71,9 +74,26 @@ class Auth extends React.Component {
     }
     submit(e) {
         e.preventDefault();
-
+        // const inputResult = `googlecall.com/v1/?query=${inputValue}`
+        const inputResult = this.state.userText;
+        console.log(inputResult);
+        const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+        axios
+            .get(`${googleURL}`, {
+                params: {
+                    key: "AIzaSyDNBpAAUuUkRyioDLQUQW_DZYIb1PiY85Q",
+                    address: inputResult
+                }
+            })
+            .then(({ data }) => {
+                this.setState({
+                    lat: data.results[0].geometry.location.lat,
+                    lon: data.results[0].geometry.location.lng
+                });
+                console.log(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+            });
     }
-
+    
     render() {
     return (
         <div>
