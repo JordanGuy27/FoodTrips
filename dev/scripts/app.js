@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import axios from 'axios';
+import axiosReq from './axiosReq';
 import Auth from './authentication';
 
 // Initialize Firebase
@@ -19,6 +21,7 @@ class App extends React.Component {
       return (
           <div>
             <Auth />
+            <AxiosReq />
           </div>
       )
     }
