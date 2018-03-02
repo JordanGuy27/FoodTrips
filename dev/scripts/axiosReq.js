@@ -4,53 +4,54 @@
 
 // const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
 
-// class AxiosReq extends React.Component {
-//   constructor() {
-//     super();
-//     // this.zomatoSearch = this.zomatoSearch.bind(this);
-//     // this.getCoords = this.getCoords.bind(this);
-//     this.state = {
-//       restaurants: [],
-//       city: "",
-//       restaurant: ""
-//     };
-//   }
-//   // getCoords(address) {
-//   //   axios
-//   //     .get(`${googleURL}`, {
-//   //       params: {
-//   //         key: "AIzaSyDNBpAAUuUkRyioDLQUQW_DZYIb1PiY85Q",
-//   //         address: address
-//   //       }
-//   //     })
-//   //     .then(({ data }) => {
-//   //       this.setState({
-//   //         lat: data.results[0].geometry.location.lat,
-//   //         lon: data.results[0].geometry.location.lng
-//   //       });
-//   //       console.log(data);
-//   //     });
-//   // }
-//   zomatoSearch() {
-//     axios
-//       .get(`https://developers.zomato.com/api/v2.1/search`, {
-//         headers: {
-//           "user-key": `53314a8415a07eafa4656461b1c6272d`
-//         },
-//         params: {
-//           // q: 'toronto'      
+class AxiosReq extends React.Component {
+  constructor() {
+    super();
+    this.zomatoSearch = this.zomatoSearch.bind(this);
+    this.getCoords = this.getCoords.bind(this);
+    this.state = {
+      restaurants: [],
+      city: "",
+      restaurant: ""
+    };
+  }
+  getCoords(address) {
+    axios
+      .get(`${googleURL}`, {
+        params: {
+          key: "AIzaSyDNBpAAUuUkRyioDLQUQW_DZYIb1PiY85Q",
+          address: address
+        }
+      })
+      .then(({ data }) => {
+        return this.setState({
+          lat: data.results[0].geometry.location.lat,
+          lon: data.results[0].geometry.location.lng
+        });
+        
+      });
+  }
+  zomatoSearch(lat, lon) {
+    axios
+      .get(`https://developers.zomato.com/api/v2.1/search`, {
+        headers: {
+          "user-key": `53314a8415a07eafa4656461b1c6272d`
+        },
+        params: {
+          // q: 'toronto'      
 
-//           lat: "",
-//           lon: "",
-//           radius: '500',
+          'lat': lat,
+          'lon': lon,
+          radius: '500',
 
-//           sort: 'real_distance'
-//         }
-//       })
-//       .then(({ data }) => {
-//         // const restRes = data.restaurants[4].restaurant.name;
-//         // // console.log(restRes);
-//         // const restAdd = data.restaurants[4].restaurant.location.address;
+          sort: 'real_distance'
+        }
+      })
+      .then(({ data }) => {
+        console.log(data);
+        // const restRes = data.restaurants[4].restaurant.name;
+        // // console.log(restRes);
+        // const restAdd = data.restaurants[4].restaurant.location.address;
 
 //         // const newList = {
 
@@ -68,13 +69,15 @@
 
 //         console.log(newArray);
 
-//         this.setState({ restaurants: newArray });
-//       });
-//   }
-  // componentDidMount() {
-  //   this.getCoords();
-  //   this.zomatoSearch();
-  // }
+
+        this.setState({ restaurants: newArray });
+      });
+  }
+  componentDidMount() {
+    this.getCoords("438 Queen St W");
+    this.zomatoSearch(this.state.lat, this.state.lon);
+  }
+
 
 //   render() {
 //     return (
