@@ -24,14 +24,14 @@ class AxiosReq extends React.Component {
         }
       })
       .then(({ data }) => {
-        this.setState({
+        return this.setState({
           lat: data.results[0].geometry.location.lat,
           lon: data.results[0].geometry.location.lng
         });
-        console.log(data);
+        
       });
   }
-  zomatoSearch() {
+  zomatoSearch(lat, lon) {
     axios
       .get(`https://developers.zomato.com/api/v2.1/search`, {
         headers: {
@@ -40,14 +40,15 @@ class AxiosReq extends React.Component {
         params: {
           // q: 'toronto'      
 
-          lat: "",
-          lon: "",
+          'lat': lat,
+          'lon': lon,
           radius: '500',
 
           sort: 'real_distance'
         }
       })
       .then(({ data }) => {
+        console.log(data);
         // const restRes = data.restaurants[4].restaurant.name;
         // // console.log(restRes);
         // const restAdd = data.restaurants[4].restaurant.location.address;
@@ -73,7 +74,7 @@ class AxiosReq extends React.Component {
   }
   componentDidMount() {
     this.getCoords("438 Queen St W");
-    this.zomatoSearch();
+    this.zomatoSearch(this.state.lat, this.state.lon);
   }
 
   render() {
