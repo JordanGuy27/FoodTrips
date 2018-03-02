@@ -14,13 +14,8 @@ class Auth extends React.Component {
             user: {},
             userText: '',
             lat: '',
-<<<<<<< HEAD
             lon: '',
             restaurants: []
-=======
-            lon: ''
-
->>>>>>> 1e98352d87a2c35c0aab4e3712d113c0f3f03d5f
         }
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
@@ -155,7 +150,6 @@ class Auth extends React.Component {
                 return this.setState({
                     lat: data.results[0].geometry.location.lat,
                     lon: data.results[0].geometry.location.lng
-<<<<<<< HEAD
                 });
                 
                 // console.log(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
@@ -202,11 +196,6 @@ class Auth extends React.Component {
                 // });
             });
     }
-        
-=======
-                });                
-            });
-    }
     submit(e) {
         e.preventDefault();
         // const inputResult = `googlecall.com/v1/?query=${inputValue}`
@@ -216,8 +205,6 @@ class Auth extends React.Component {
         this.getCoords(inputResult)
         // this.zomatoSearch(this.state.lat, this.state.lon);
     }
-    
->>>>>>> 1e98352d87a2c35c0aab4e3712d113c0f3f03d5f
     render() {
     return (
         <div>
