@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AxiosReq from './axiosReq';
+// import AxiosReq from './axiosReq';
 import axios from 'axios';
 
 class Auth extends React.Component {
@@ -11,8 +11,8 @@ class Auth extends React.Component {
             user: {},
             userText: '',
             lat: '',
-            lng: ''
-
+            lon: '',
+            restaurants: []
         }
         this.signIn = this.signIn.bind(this);
         this.signOut = this.signOut.bind(this);
@@ -90,10 +90,52 @@ class Auth extends React.Component {
                     lat: data.results[0].geometry.location.lat,
                     lon: data.results[0].geometry.location.lng
                 });
-                console.log(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+                
+                // console.log(data.results[0].geometry.location.lat, data.results[0].geometry.location.lng);
+                
+            });
+        axios
+            .get(`https://developers.zomato.com/api/v2.1/search`, {
+                headers: {
+                    "user-key": `53314a8415a07eafa4656461b1c6272d`
+                },
+                params: {
+                    // q: 'toronto'      
+
+                    lat: this.state.lat,
+                    lon: this.state.lon,
+                    radius: '500',
+
+                    sort: 'real_distance'
+                }
+            })
+            .then(({data}) => {
+                // const restRes = data.restaurants[4].restaurant.name;
+                // // console.log(restRes);
+                // const restAdd = data.restaurants[4].restaurant.location.address;
+
+                // const newList = {
+
+                // };
+
+                const newArray = Array.from(this.state.restaurants);
+
+                data.restaurants.forEach(eatingPlace => {
+                    // console.log(eatingPlace.restaurant.name);
+                    // console.log(eatingPlace.restaurant.location.address);
+
+                    const restObj = { name: eatingPlace.restaurant.name, address: eatingPlace.restaurant.location.address };
+                    newArray.push(restObj);
+                });
+
+                console.log(newArray);
+
+                // this.setState({ 
+                //     restaurants: newArray
+                // });
             });
     }
-    
+        
     render() {
     return (
         <div>
