@@ -1,8 +1,8 @@
-import React from 'react';
-import DOM from "react-dom";
-import axios from "axios";
+// import React from 'react';
+// import DOM from "react-dom";
+// import axios from "axios";
 
-const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
+// const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
 
 class AxiosReq extends React.Component {
   constructor() {
@@ -53,21 +53,22 @@ class AxiosReq extends React.Component {
         // // console.log(restRes);
         // const restAdd = data.restaurants[4].restaurant.location.address;
 
-        // const newList = {
+//         // const newList = {
 
-        // };
+//         // };
 
-        const newArray = Array.from(this.state.restaurants);
+//         const newArray = Array.from(this.state.restaurants);
 
-        data.restaurants.forEach(eatingPlace => {
-          // console.log(eatingPlace.restaurant.name);
-          // console.log(eatingPlace.restaurant.location.address);
+//         data.restaurants.forEach(eatingPlace => {
+//           // console.log(eatingPlace.restaurant.name);
+//           // console.log(eatingPlace.restaurant.location.address);
 
-          const restObj = { name: eatingPlace.restaurant.name, address: eatingPlace.restaurant.location.address };
-          newArray.push(restObj);
-        });
+//           const restObj = { name: eatingPlace.restaurant.name, address: eatingPlace.restaurant.location.address };
+//           newArray.push(restObj);
+//         });
 
-        console.log(newArray);
+//         console.log(newArray);
+
 
         this.setState({ restaurants: newArray });
       });
@@ -77,16 +78,17 @@ class AxiosReq extends React.Component {
     this.zomatoSearch(this.state.lat, this.state.lon);
   }
 
-  render() {
-    return (
 
-      <div>
+//   render() {
+//     return (
 
-            <h1>{this.state.restaurant}</h1>
-            <p>{this.state.city}</p>
+//       <div>
 
-      </div>
-    );
-  }
-}
-export default AxiosReq;
+//             <h1>{this.state.restaurant}</h1>
+//             <p>{this.state.city}</p>
+
+//       </div>
+//     );
+//   }
+// }
+// export default AxiosReq;

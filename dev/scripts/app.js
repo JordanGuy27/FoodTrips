@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import AxiosReq from './axiosReq';
+// import AxiosReq from './axiosReq';
 import Auth from './authentication';
 import MapContainer from './google';
 
@@ -23,7 +23,7 @@ class App extends React.Component {
       return (
           <div>
             <Auth />
-            <AxiosReq />
+            {/* <AxiosReq /> */}
             <MapContainer />
           </div>
       )

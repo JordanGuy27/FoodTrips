@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AxiosReq from './axiosReq';
+// import AxiosReq from './axiosReq';
 import axios from 'axios';
 
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
@@ -14,7 +14,10 @@ class Auth extends React.Component {
             user: {},
             userText: '',
             lat: '',
-            lon: ''
+            lon: '',
+            restaurants: []
+
+
 
         }
         this.signIn = this.signIn.bind(this);
@@ -150,6 +153,8 @@ class Auth extends React.Component {
                 return this.setState({
                     lat: data.results[0].geometry.location.lat,
                     lon: data.results[0].geometry.location.lng
+
+              
                 });                
             });
     }
@@ -163,6 +168,7 @@ class Auth extends React.Component {
         // this.zomatoSearch(this.state.lat, this.state.lon);
     }
     
+
     render() {
     return (
         <div>
