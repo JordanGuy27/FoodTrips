@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
-import Auth from './authentication';
 import MapContainer from './google';
 
 const googleURL = "https://maps.googleapis.com/maps/api/geocode/json?";
